@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class PostController extends Controller
 {
@@ -14,7 +16,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        return 'ciao';
+        $data['user'] = Auth::user();
+        $data['id'] = Auth::id();
+
+        return view('admin.index', ['data' => $data]);
     }
 
     /**
