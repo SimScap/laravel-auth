@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Models\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,10 +16,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $data['user'] = Auth::user();
-        $data['id'] = Auth::id();
+        //$data['user'] = Auth::user();
+        //$data['id'] = Auth::id();
+        $posts = Post::orderBy('id', 'desc')->paginate(20);
 
-        return view('admin.index', ['data' => $data]);
+        return view('admin.posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -49,9 +50,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( Post $post)
     {
-        //
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
