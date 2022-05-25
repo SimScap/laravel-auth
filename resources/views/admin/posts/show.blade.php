@@ -14,7 +14,7 @@
                     </h4>
                 </div>
                 <div class="col-12">
-                    <img src="{{ $post->image_url}}" alt="{{$post->title}}">
+                    <img src="{{ $post->image_url }}" alt="{{$post->title}}">
                 </div>
                 <div class="col-12">
                     <div class="card-text">
@@ -23,5 +23,6 @@
                 </div>
             </div>
         </div>    
-@endsection
+@dd($post)
 
+@endsection
